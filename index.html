@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Password</title>
+    <title>Document</title>
     <style>
+
         body{
             background-color: #BFEDEF;
             padding: 0;
@@ -14,34 +15,49 @@
             font-family: Helvetica;
         }
 
-        #header{
-            margin: 0;
-            border: 0;
-            padding: 16px;
-            text-align: center;
-            position: relative;
+        .wrapper {
+            display: flex;  
+            flex-flow: column wrap;
+            font-weight: bold;
+            text-align: center; 
+        }
+
+        .wrapper > * {
+            padding: 10px;
+            flex: 1 100%;
+        }
+
+        .header {
             background-color: #75B9BE;
-            top: 0;
-            color: #0D1F22;
-        }
-
-        #random{
-            color: #EE7674;;
-        }
-
-        #strong{
-            color: #EE7674;;
-        }
-
-        #main{
-            width: 20vw;
-            margin: auto;
             padding: 16px;
-            margin-top: 50vh;
+        }
+
+        .main {
+            background-color: #BFEDEF;
+            align-self: center;
+            width: 30%;
+        }
+
+        .div-1 {
+            background-color: #BFEDEF;
+        }
+
+        .div-2 {
+            background-color: #BFEDEF;
+        }
+
+        @media all and (min-width: 600px) {
+            .div { flex: 1 0 0; }
+        }
+
+        @media all and (min-width: 800px) {
+            .main   { flex: 3 0px; }
+            .div-1  { order: 1; } 
+            .main   { order: 2; }
+            .div-2  { order: 3; }
         }
 
         .btn{
-            width: 100%;
             text-decoration: none;
             transition-duration: 0.4s;
             cursor: pointer;
@@ -59,65 +75,57 @@
             background-color: rgb(233, 55, 99);
         }
 
-        .box{
-            background-color: #BFEDEF;
-            padding: 8px;
-            border-radius: 4px;
-            border: 1px solid #0D1F22
-        }
-        
         #Password{
+            padding: 8px;
             font-size: 18px;
             text-align: center;
             color: #0D1F22;
-            width: 100%;
+            border: 1px solid #0D1F22;
         }
 
         #copyText{
             position: relative;
             font-size: 14px;
-            width: 50%;
-            float: right;
         }
-
-
     </style>
 </head>
 <body>
-    <div id="header">
-        <h1>Gerenate a <tag id="random">random</tag> and <tag id="strong">strong</tag> Password</h1>
-    </div>
-    <div id="main">
-        <button class="btn" onclick="generate()">Get Password</button>
-        <br><br>
-        <div class="box">
+    <div class="wrapper">
+        <div class="header">
+            <h1>Gerenate a random and strong Password</h1>
+        </div>
+        <div class="div div-1">
+            <button class="btn" onclick="generate()">Get Password</button>
+        </div>
+        <div class="main">
             <p id="Password"><tag style="color:#BFEDEF;">hidden secret</tag></p>
+        </div>        
+        <div class="div div-2">
             <button class="btn" onclick="copyText()" id="copyText">Copy Password</button>
         </div>
     </div>
-<script>
-
-    function copyText(){
-        var copy = document.getElementById('Password');
-        window.getSelection().selectAllChildren(copy);
-        document.execCommand("Copy")
-    }
-
-    function generate() {
-        document.getElementById('Password').innerHTML= random();
-    }
-
-    function random(){
-        var res = '';
-        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%';
-
-        for(var i = 0; i < 20; i++){
-            res += characters.charAt(Math.floor(Math.random() * characters.length));
+    <script>
+        function copyText(){
+            var copy = document.getElementById('Password');
+            window.getSelection().selectAllChildren(copy);
+            document.execCommand("Copy")
+        }
+    
+        function generate() {
+            document.getElementById('Password').innerHTML= random();
+        }
+    
+        function random(){
+            var res = '';
+            var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%';
+    
+            for(var i = 0; i < 20; i++){
+                res += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            
+            return res
         }
         
-        return res
-    }
-    
-</script>
+    </script>
 </body>
 </html>
