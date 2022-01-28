@@ -6,20 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get Password</title>
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
         #main{
             margin: auto;
+            padding: 16px;
             font-family: Arial, Helvetica, sans-serif;
         }
 
         #Password{
             font-family: Helvetica;
-            display: none;
+        }
+
+        .btn{
+            padding: 8px;
+            text-align: center;
+            background-color: #da4167;
+            color: aliceblue;
         }
     </style>
 </head>
 <body>
     <div id="main">
-        <button onclick="generate()">Get a Password</button>
+        <button class="btn" onclick="generate()">Get a Password</button>
         <p id="Password"></p>
     </div>
 <script>
