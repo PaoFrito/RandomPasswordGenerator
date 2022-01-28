@@ -6,40 +6,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get Password</title>
     <style>
-        *{
-            margin: 0;
+        body{
+            background-color: #BFEDEF;
             padding: 0;
+            margin: 0;
             border: 0;
-        }
-        #main{
-            margin: auto;
-            padding: 16px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        #Password{
             font-family: Helvetica;
         }
 
+        #header{
+            margin: 0;
+            border: 0;
+            padding: 16px;
+            text-align: center;
+            position: relative;
+            background-color: #75B9BE;
+            top: 0;
+            color: #0D1F22;
+        }
+
+        #random{
+            color: #EE7674;;
+        }
+
+        #strong{
+            color: #EE7674;;
+        }
+
+        #main{
+            width: 20vw;
+            margin: auto;
+            padding: 16px;
+            margin-top: 20vh;
+        }
+
         .btn{
+            width: 100%;
+            text-decoration: none;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            font-size: 32px;
             padding: 8px;
             text-align: center;
-            background-color: #da4167;
+            border: 1px solid #083D77;
+            background-color: #EE7674;
             color: aliceblue;
+            border-radius: 4px;
         }
+
+        .btn:hover{
+            border: 1px solid #06315f;
+            background-color: rgb(233, 55, 99);
+        }
+
+        .box{
+            background-color: #BFEDEF;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #0D1F22
+        }
+        
+        #Password{
+            font-size: 18px;
+            text-align: center;
+            color: #0D1F22;
+            width: 100%;
+        }
+
+        #copyText{
+            position: relative;
+            font-size: 14px;
+            width: 50%;
+            float: right;
+        }
+
+
     </style>
 </head>
 <body>
+    <div id="header">
+        <h1>Gerenate a <tag id="random">random</tag> and <tag id="strong">strong</tag> Password</h1>
+    </div>
     <div id="main">
-        <button class="btn" onclick="generate()">Get a Password</button>
-        <p id="Password"></p>
+        <button class="btn" onclick="generate()">Get Password</button>
+        <br><br>
+        <div class="box">
+            <p id="Password"><tag style="color:#BFEDEF;">hidden secret</tag></p>
+            <button class="btn" onclick="copyText()" id="copyText">Copy Password</button>
+        </div>
     </div>
 <script>
+
+    function copyText(){
+        var copy = document.getElementById('Password');
+        window.getSelection().selectAllChildren(copy);
+        document.execCommand("Copy")
+    }
+
     function generate() {
-        var x = document.getElementById("Password");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        }
         document.getElementById('Password').innerHTML= random();
     }
 
